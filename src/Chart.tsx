@@ -11,6 +11,7 @@ import {
 import TextField from "@material-ui/core/TextField";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import Countries from "./Countries";
+import "./Chart.css";
 
 type LiveByCountryAndStatusJSON = {
   Country: string;
@@ -91,34 +92,38 @@ function Chart() {
   } else {
     return (
       <div>
-        <div style={{ width: 400 }}>
-          <Autocomplete
-            className="countryName"
-            freeSolo
-            options={Countries.map((option) => option.Country)}
-            defaultValue="Japan"
-            renderInput={(params) => (
-              <TextField
-                {...params}
-                label="Search by country"
-                margin="normal"
-                variant="outlined"
-              />
-            )}
-            onSelect={(event) => searchCountry(event)}
-          />
+        <div className="search">
+          <div style={{ width: 400 }}>
+            <Autocomplete
+              className="countryName"
+              freeSolo
+              options={Countries.map((option) => option.Country)}
+              defaultValue="Japan"
+              renderInput={(params) => (
+                <TextField
+                  {...params}
+                  label="Search by country"
+                  margin="normal"
+                  variant="outlined"
+                />
+              )}
+              onSelect={(event) => searchCountry(event)}
+            />
+          </div>
         </div>
-        <LineChart width={600} height={300} data={covid19Data}>
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="date" padding={{ left: 10, right: 10 }} />
-          <YAxis />
-          <Tooltip />
-          <Legend />
-          <Line type="monotone" dataKey="confirmed" stroke="#8884d8" />
-          <Line type="monotone" dataKey="deaths" stroke="#ff4500" />
-          <Line type="monotone" dataKey="recovered" stroke="#00bfff" />
-          <Line type="monotone" dataKey="active" stroke="#556b2f" />
-        </LineChart>
+        <div className="chart">
+          <LineChart width={600} height={300} data={covid19Data}>
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="date" padding={{ left: 10, right: 10 }} />
+            <YAxis />
+            <Tooltip />
+            <Legend />
+            <Line type="monotone" dataKey="confirmed" stroke="#8884d8" />
+            <Line type="monotone" dataKey="deaths" stroke="#ff4500" />
+            <Line type="monotone" dataKey="recovered" stroke="#00bfff" />
+            <Line type="monotone" dataKey="active" stroke="#556b2f" />
+          </LineChart>
+        </div>
       </div>
     );
   }
