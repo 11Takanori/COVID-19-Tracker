@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/static/css/main.a20875e6.chunk.css",
-    "main.js": "/static/js/main.a4f5e9b6.chunk.js",
-    "main.js.map": "/static/js/main.a4f5e9b6.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.a4cbfc2b.js",
-    "runtime-main.js.map": "/static/js/runtime-main.a4cbfc2b.js.map",
-    "static/js/2.02a399a6.chunk.js": "/static/js/2.02a399a6.chunk.js",
-    "static/js/2.02a399a6.chunk.js.map": "/static/js/2.02a399a6.chunk.js.map",
-    "index.html": "/index.html",
-    "precache-manifest.16b780627969b82f24b34b1c749050e8.js": "/precache-manifest.16b780627969b82f24b34b1c749050e8.js",
-    "service-worker.js": "/service-worker.js",
-    "static/css/main.a20875e6.chunk.css.map": "/static/css/main.a20875e6.chunk.css.map",
-    "static/js/2.02a399a6.chunk.js.LICENSE.txt": "/static/js/2.02a399a6.chunk.js.LICENSE.txt"
+    "main.css": "/11Takanori/COVID-19-Tracker/static/css/main.a20875e6.chunk.css",
+    "main.js": "/11Takanori/COVID-19-Tracker/static/js/main.9899683e.chunk.js",
+    "main.js.map": "/11Takanori/COVID-19-Tracker/static/js/main.9899683e.chunk.js.map",
+    "runtime-main.js": "/11Takanori/COVID-19-Tracker/static/js/runtime-main.46d73160.js",
+    "runtime-main.js.map": "/11Takanori/COVID-19-Tracker/static/js/runtime-main.46d73160.js.map",
+    "static/js/2.02a399a6.chunk.js": "/11Takanori/COVID-19-Tracker/static/js/2.02a399a6.chunk.js",
+    "static/js/2.02a399a6.chunk.js.map": "/11Takanori/COVID-19-Tracker/static/js/2.02a399a6.chunk.js.map",
+    "index.html": "/11Takanori/COVID-19-Tracker/index.html",
+    "precache-manifest.557c06d51f1f08ffae154bc43db46ad4.js": "/11Takanori/COVID-19-Tracker/precache-manifest.557c06d51f1f08ffae154bc43db46ad4.js",
+    "service-worker.js": "/11Takanori/COVID-19-Tracker/service-worker.js",
+    "static/css/main.a20875e6.chunk.css.map": "/11Takanori/COVID-19-Tracker/static/css/main.a20875e6.chunk.css.map",
+    "static/js/2.02a399a6.chunk.js.LICENSE.txt": "/11Takanori/COVID-19-Tracker/static/js/2.02a399a6.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.a4cbfc2b.js",
+    "static/js/runtime-main.46d73160.js",
     "static/js/2.02a399a6.chunk.js",
     "static/css/main.a20875e6.chunk.css",
-    "static/js/main.a4f5e9b6.chunk.js"
+    "static/js/main.9899683e.chunk.js"
   ]
 }
