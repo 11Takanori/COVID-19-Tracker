@@ -62,7 +62,7 @@ function Chart() {
       );
   }, [countryName]);
 
-  const data = items.map(
+  const covid19Data = items.map(
     (item) =>
       ({
         name: item.Country,
@@ -108,7 +108,7 @@ function Chart() {
             onSelect={(event) => searchCountry(event)}
           />
         </div>
-        <LineChart width={600} height={300} data={data}>
+        <LineChart width={600} height={300} data={covid19Data}>
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="date" padding={{ left: 10, right: 10 }} />
           <YAxis />
