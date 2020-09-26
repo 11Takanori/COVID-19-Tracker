@@ -8,10 +8,8 @@ import {
   Tooltip,
   Legend,
 } from "recharts";
-import TextField from "@material-ui/core/TextField";
-import Autocomplete from "@material-ui/lab/Autocomplete";
-import Countries from "./Countries";
 import "./Chart.css";
+import Country from "./Country";
 
 type LiveByCountryAndStatusJSON = {
   Country: string;
@@ -37,11 +35,11 @@ interface LiveByCountryAndStatus {
   date: string;
 }
 
-function Chart() {
-  const [countryName, setcountryName] = useState<string>("japan");
+function Chart(props: { country: Country }) {
   const [error, setError] = useState<null | string>(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [items, setItems] = useState<LiveByCountryAndStatus[]>([]);
+  const countryName = props.country.name;
 
   const url =
     "https://api.covid19api.com/live/country/" +
@@ -76,16 +74,6 @@ function Chart() {
       );
   }, [countryName]);
 
-  const searchCountry = (event: any) => {
-    const country = Countries.find(
-      (object) => object.Country === event.target.value
-    );
-
-    if (country) {
-      setcountryName(country.Slug);
-    }
-  };
-
   if (error) {
     return <div>Error: {error}</div>;
   } else if (!isLoaded) {
@@ -93,25 +81,6 @@ function Chart() {
   } else {
     return (
       <div>
-        <div className="search">
-          <div style={{ width: 400 }}>
-            <Autocomplete
-              className="countryName"
-              freeSolo
-              options={Countries.map((option) => option.Country)}
-              defaultValue="Japan"
-              renderInput={(params) => (
-                <TextField
-                  {...params}
-                  label="Search by country"
-                  margin="normal"
-                  variant="outlined"
-                />
-              )}
-              onSelect={(event) => searchCountry(event)}
-            />
-          </div>
-        </div>
         <div className="chart">
           <LineChart width={600} height={300} data={items}>
             <CartesianGrid strokeDasharray="3 3" />
