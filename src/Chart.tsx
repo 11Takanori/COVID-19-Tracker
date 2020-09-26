@@ -47,12 +47,11 @@ function Chart(props: { country: Country }) {
     "/status/confirmed";
 
   useEffect(() => {
+    setIsLoaded(false);
     fetch(url)
       .then((res) => res.json())
       .then(
         (result) => {
-          setIsLoaded(true);
-
           const json: LiveByCountryAndStatusJSON[] = result;
           const covid19Data = json.map(
             (item) =>
@@ -66,6 +65,7 @@ function Chart(props: { country: Country }) {
               } as LiveByCountryAndStatus)
           );
           setItems(covid19Data);
+          setIsLoaded(true);
         },
         (error) => {
           setIsLoaded(true);
