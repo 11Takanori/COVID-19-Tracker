@@ -41,7 +41,7 @@ function Chart() {
   const [countryName, setcountryName] = useState<string>("japan");
   const [error, setError] = useState<null | string>(null);
   const [isLoaded, setIsLoaded] = useState(false);
-  const [items, setItems] = useState<LiveByCountryAndStatusJSON[]>([]);
+  const [items, setItems] = useState<LiveByCountryAndStatus[]>([]);
 
   const url =
     "https://api.covid19api.com/live/country/" +
@@ -54,7 +54,20 @@ function Chart() {
       .then(
         (result) => {
           setIsLoaded(true);
-          setItems(result);
+
+          const json: LiveByCountryAndStatusJSON[] = result;
+          const covid19Data = json.map(
+            (item) =>
+              ({
+                name: item.Country,
+                confirmed: item.Confirmed,
+                deaths: item.Deaths,
+                recovered: item.Recovered,
+                active: item.Active,
+                date: item.Date.toLocaleString().substring(0, 10),
+              } as LiveByCountryAndStatus)
+          );
+          setItems(covid19Data);
         },
         (error) => {
           setIsLoaded(true);
@@ -62,18 +75,6 @@ function Chart() {
         }
       );
   }, [countryName]);
-
-  const covid19Data = items.map(
-    (item) =>
-      ({
-        name: item.Country,
-        confirmed: item.Confirmed,
-        deaths: item.Deaths,
-        recovered: item.Recovered,
-        active: item.Active,
-        date: item.Date.toLocaleString().substring(0, 10),
-      } as LiveByCountryAndStatus)
-  );
 
   const searchCountry = (event: any) => {
     const country = Countries.find(
@@ -112,7 +113,7 @@ function Chart() {
           </div>
         </div>
         <div className="chart">
-          <LineChart width={600} height={300} data={covid19Data}>
+          <LineChart width={600} height={300} data={items}>
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="date" padding={{ left: 10, right: 10 }} />
             <YAxis />
