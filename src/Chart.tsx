@@ -8,8 +8,8 @@ import {
   Tooltip,
   Legend,
 } from "recharts";
-import "./Chart.css";
 import Country from "./Country";
+import Center from "./Center";
 
 type LiveByCountryAndStatusJSON = {
   Country: string;
@@ -72,7 +72,7 @@ function Chart(props: { country: Country }) {
           setError(error);
         }
       );
-  }, [countryName]);
+  }, [url]);
 
   if (error) {
     return <div>Error: {error}</div>;
@@ -80,21 +80,19 @@ function Chart(props: { country: Country }) {
     return <div>Loading...</div>;
   } else {
     return (
-      <div>
-        <div className="chart">
-          <LineChart width={600} height={300} data={items}>
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="date" padding={{ left: 10, right: 10 }} />
-            <YAxis />
-            <Tooltip />
-            <Legend />
-            <Line type="monotone" dataKey="confirmed" stroke="#8884d8" />
-            <Line type="monotone" dataKey="deaths" stroke="#ff4500" />
-            <Line type="monotone" dataKey="recovered" stroke="#00bfff" />
-            <Line type="monotone" dataKey="active" stroke="#556b2f" />
-          </LineChart>
-        </div>
-      </div>
+      <Center>
+        <LineChart width={600} height={300} data={items}>
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="date" padding={{ left: 10, right: 10 }} />
+          <YAxis />
+          <Tooltip />
+          <Legend />
+          <Line type="monotone" dataKey="confirmed" stroke="#8884d8" />
+          <Line type="monotone" dataKey="deaths" stroke="#ff4500" />
+          <Line type="monotone" dataKey="recovered" stroke="#00bfff" />
+          <Line type="monotone" dataKey="active" stroke="#556b2f" />
+        </LineChart>
+      </Center>
     );
   }
 }

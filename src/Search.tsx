@@ -2,6 +2,7 @@ import React from "react";
 import TextField from "@material-ui/core/TextField";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import Countries from "./Countries";
+import Center from "./Center";
 
 function Search(props: any) {
   const searchCountry = (event: any) => {
@@ -15,7 +16,7 @@ function Search(props: any) {
   };
 
   return (
-    <div className="search">
+    <Center>
       <div style={{ width: 400 }}>
         <Autocomplete
           className="countryName"
@@ -33,7 +34,7 @@ function Search(props: any) {
           onSelect={(event) => searchCountry(event)}
         />
       </div>
-    </div>
+    </Center>
   );
 }
 
